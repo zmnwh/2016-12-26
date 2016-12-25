@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" id="txt" />
+		<input type="button" id="btn" value="按钮"/>
+		<script src="jquery-3.1.1.js"></script>
+		<script>
+			$("#btn").click(function(){
+				var val=$("#txt").val();
+				$.ajax({
+					dataType:"jsonp",
+					url:"https://api.douban.com/v2/movie/search?callback=?",
+					data:{
+						q:val
+					},
+					success:function(json){
+						console.log(json);
+					}
+				});
+			})
+		</script>
+	</body>
+</html>

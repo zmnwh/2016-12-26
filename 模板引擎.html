@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	<style>
+		.red {
+			background:red;
+		}
+	</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		<script src="artTemplate.js"></script>
+		<script type="text/html" id="tep">
+			<div id="box1">
+				<%list.forEach(function(e){%>
+					<!--循环list的每一项-->
+					<%if(e=="miaov"){%>
+						<p><%e.charAt().toUpperCase()+e.substring(1)%></p>
+						<!--这个地方是什么意思-->
+					<%}else{%>
+						<p class="red"><%=e%></p>
+						<!--怎么将这一块联系起来的-->
+					<%}%>
+				<%})%>
+			</div>
+		</script>
+		<script>
+			var json={
+				title:"标签",
+				list:["文艺","博客","摄影","电影","民谣","旅行","吉他","miaov"],
+				list2:["文艺1","博客1","摄影1","电影1","民谣1","旅行1","吉他1","miaov1"]
+			}
+			var box=document.getElementById("box");
+			var html=template("tep",json);
+			//括号里面的参数分别是什么，代表什么意思？还是仅仅只是一种格式？
+			box.innerHTML=html;
+		</script>
+	</body>
+</html>
